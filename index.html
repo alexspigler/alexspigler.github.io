@@ -13,306 +13,467 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
     <style>
-        *, *::before, *::after {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
         :root {
             --fg: #1a1a1a;
             --fg-secondary: #4a4a4a;
             --fg-muted: #7a7a7a;
             --bg: #faf9f7;
-            --bg-card: #ffffff;
             --accent: #2c4a2e;
-            --accent-light: #e8efe8;
             --border: #e0ddd8;
             --serif: 'Source Serif 4', Georgia, serif;
             --mono: 'IBM Plex Mono', 'Courier New', monospace;
         }
 
-        html {
-            font-size: 17px;
-            scroll-behavior: smooth;
-        }
-
+        html { font-size: 17px; overflow-x: hidden; }
         body {
             font-family: var(--serif);
             color: var(--fg);
             background: var(--bg);
             line-height: 1.7;
             -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
+            min-height: 100vh;
+            overflow-x: hidden;
         }
 
-        .container {
-            max-width: 640px;
-            margin: 0 auto;
-            padding: 0 1.5rem;
+        .sidebar, .main {
+            max-width: 100%;
+            overflow-wrap: break-word;
+            word-wrap: break-word;
+            overflow-x: hidden;
         }
 
-        /* Header */
-        header {
-            padding: 5rem 0 3rem;
+        /* ══════ TOP: sidebar + hero ══════ */
+        .top {
+            display: flex;
+            min-height: 100vh;
         }
 
-        header h1 {
+        /* ── Left sidebar ── */
+        .sidebar {
+            width: 370px;
+            min-width: 370px;
+            padding: 3.5rem 2rem 3.5rem 2.5rem;
+            border-right: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            overflow-y: auto;
+        }
+
+        .sidebar h1 {
             font-family: var(--mono);
-            font-size: 1.65rem;
+            font-size: 1.6rem;
             font-weight: 500;
-            letter-spacing: -0.01em;
+            letter-spacing: -0.02em;
             margin-bottom: 0.2rem;
         }
 
-        header .tagline {
+        .sidebar .school {
             font-family: var(--mono);
-            font-size: 0.78rem;
+            font-size: 0.75rem;
             color: var(--fg-muted);
             letter-spacing: 0.04em;
             text-transform: uppercase;
+            margin-bottom: 2rem;
         }
 
-        .divider {
-            width: 100%;
-            height: 1px;
-            background: var(--border);
-            margin: 0;
-        }
-
-        /* Intro */
-        .intro {
-            padding: 2.5rem 0 2rem;
-        }
-
-        .intro p {
-            font-size: 1.05rem;
+        .sidebar .bio {
+            font-size: 0.95rem;
             color: var(--fg-secondary);
-            max-width: 580px;
+            margin-bottom: 2rem;
+            line-height: 1.65;
         }
 
-        /* Sections */
-        section {
-            padding: 2rem 0;
-        }
-
-        section h2 {
+        .sidebar .detail-label {
             font-family: var(--mono);
-            font-size: 0.72rem;
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--fg-muted);
+            margin-bottom: 0.4rem;
+            margin-top: 1.25rem;
+        }
+
+        .sidebar .detail-label:first-of-type {
+            margin-top: 0;
+        }
+
+        .sidebar .detail-value {
+            font-size: 0.88rem;
+            color: var(--fg-secondary);
+            line-height: 1.5;
+        }
+
+        .sidebar .detail-value.mono {
+            font-family: var(--mono);
+            font-size: 0.78rem;
+        }
+
+        .sidebar-footer {
+            margin-top: auto;
+        }
+
+        .sidebar-links {
+            display: flex;
+            gap: 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .sidebar-links a {
+            font-family: var(--mono);
+            font-size: 0.78rem;
+            color: var(--fg);
+            text-decoration: none;
+            border-bottom: 1.5px solid var(--border);
+            padding-bottom: 1px;
+            transition: color 0.2s, border-color 0.2s;
+        }
+        .sidebar-links a:hover {
+            color: var(--accent);
+            border-color: var(--accent);
+        }
+
+        .gpa-table {
+            font-family: var(--mono);
+            font-size: 0.78rem;
+            color: var(--fg-muted);
+            border-collapse: collapse;
+            width: auto;
+        }
+        .gpa-table td {
+            padding: 0;
+        }
+        .gpa-table td:first-child {
+            padding-right: 0.4rem;
+        }
+
+        .sidebar .seeking {
+            font-size: 0.82rem;
+            color: var(--accent);
+            font-weight: 500;
+            margin-bottom: 0.75rem;
+        }
+
+        .sidebar .citizenship {
+            font-family: var(--mono);
+            font-size: 0.65rem;
+            color: var(--fg-muted);
+        }
+        .sidebar .cit-line {
+            display: inline-block;
+            padding-left: 1em;
+            text-indent: -1em;
+        }
+
+        /* ── Right: main content ── */
+        .main {
+            padding: 3.5rem 3rem;
+            margin-left: 370px;
+            flex: 1;
+        }
+
+        /* Section label */
+        .label {
+            font-family: var(--mono);
+            font-size: 0.68rem;
             font-weight: 500;
             text-transform: uppercase;
             letter-spacing: 0.1em;
             color: var(--fg-muted);
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.25rem;
         }
 
-        /* Project Cards */
-        .project {
-            margin-bottom: 2rem;
-            padding: 1.5rem;
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 4px;
-            transition: border-color 0.2s ease;
-        }
-
-        .project:hover {
-            border-color: var(--accent);
-        }
-
-        .project h3 {
+        /* ── Project inline (chaotic attractors) ── */
+        .project-title {
             font-family: var(--serif);
-            font-size: 1.1rem;
+            font-size: 1.15rem;
             font-weight: 600;
             margin-bottom: 0.15rem;
         }
-
-        .project .tech {
+        .project-tech {
             font-family: var(--mono);
             font-size: 0.72rem;
             color: var(--accent);
             letter-spacing: 0.03em;
-            margin-bottom: 0.75rem;
             display: block;
+            margin-bottom: 1.25rem;
         }
-
-        .project p {
-            font-size: 0.92rem;
+        .project-desc {
+            font-size: 0.9rem;
             color: var(--fg-secondary);
             line-height: 1.65;
+            margin-bottom: 0.25rem;
         }
-
-        .project a {
+        .project-gh {
             display: inline-block;
-            margin-top: 0.75rem;
+            margin-bottom: 0.5rem;
             font-family: var(--mono);
-            font-size: 0.75rem;
+            font-size: 0.72rem;
             color: var(--accent);
             text-decoration: none;
+        }
+        .project-gh:hover { text-decoration: underline; }
+        .project-gh::after { content: ' \2192'; }
+
+        /* ── Attractor gallery ── */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.25rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .gallery figure {
+            margin: 0;
+            cursor: pointer;
+        }
+
+        .gallery img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 4px;
+            transition: transform 0.2s ease;
+            cursor: pointer;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.02);
+        }
+
+        .gallery figcaption {
+            font-family: var(--mono);
+            font-size: 0.62rem;
+            color: var(--fg-muted);
+            text-align: center;
+            margin-top: 0.5rem;
             letter-spacing: 0.02em;
-            border-bottom: 1px solid transparent;
-            transition: border-color 0.2s ease;
         }
 
-        .project a:hover {
-            border-bottom-color: var(--accent);
+        /* ── Project cards ── */
+        .projects {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.25rem;
+            margin-bottom: 3rem;
         }
 
-        .project a::after {
-            content: ' →';
+        .project-card {
+            padding: 1.5rem;
+            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            transition: border-color 0.2s;
         }
 
-        /* Education */
-        .edu-main {
-            font-size: 1rem;
+        .project-card:hover {
+            border-color: var(--accent);
+        }
+
+        .project-card h3 {
+            font-size: 1.05rem;
             font-weight: 600;
             margin-bottom: 0.15rem;
         }
 
-        .edu-school {
-            font-size: 0.95rem;
-            color: var(--fg-secondary);
-            margin-bottom: 0.1rem;
-        }
-
-        .edu-gpa {
+        .project-card .tech {
             font-family: var(--mono);
-            font-size: 0.78rem;
-            color: var(--fg-muted);
-            margin-bottom: 0.85rem;
+            font-size: 0.68rem;
+            color: var(--accent);
+            letter-spacing: 0.03em;
+            display: block;
+            margin-bottom: 0.75rem;
         }
 
-        .coursework {
-            font-size: 0.88rem;
+        .project-card p {
+            font-size: 0.85rem;
             color: var(--fg-secondary);
             line-height: 1.6;
         }
 
-        /* Links / Footer */
-        footer {
-            padding: 2.5rem 0 5rem;
-        }
-
-        .links {
-            display: flex;
-            gap: 1.75rem;
-            flex-wrap: wrap;
-        }
-
-        .links a {
+        .project-card a {
+            display: inline-block;
+            margin-top: 0.75rem;
             font-family: var(--mono);
-            font-size: 0.82rem;
-            color: var(--fg);
-            text-decoration: none;
-            letter-spacing: 0.02em;
-            padding-bottom: 2px;
-            border-bottom: 1.5px solid var(--border);
-            transition: border-color 0.2s ease, color 0.2s ease;
-        }
-
-        .links a:hover {
+            font-size: 0.72rem;
             color: var(--accent);
-            border-bottom-color: var(--accent);
+            text-decoration: none;
+        }
+        .project-card a:hover { text-decoration: underline; }
+        .project-card a::after { content: ' \2192'; }
+
+        /* ── Coursework pills ── */
+        .label-section { margin-bottom: 2.5rem; }
+
+        .course-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
         }
 
-        .seeking {
-            font-size: 0.92rem;
-            color: var(--fg-secondary);
-            margin-bottom: 1.5rem;
-        }
-
-        .citizenship {
-            margin-top: 1.5rem;
+        .course-list span {
             font-family: var(--mono);
             font-size: 0.7rem;
-            color: var(--fg-muted);
-            letter-spacing: 0.03em;
+            color: var(--fg-secondary);
+            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            padding: 0.3rem 0.65rem;
+            letter-spacing: 0.01em;
         }
 
-        /* Responsive */
-        @media (max-width: 600px) {
-            html { font-size: 16px; }
-            header { padding: 3.5rem 0 2rem; }
-            header h1 { font-size: 1.4rem; }
-            .project { padding: 1.25rem; }
+        /* ── Lightbox ── */
+        .lightbox {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 1000;
+            background: rgba(0,0,0,0.9);
+            align-items: center;
+            justify-content: center;
+            cursor: zoom-out;
+            padding: 2rem;
+        }
+        .lightbox.active { display: flex; }
+        .lightbox img { max-width: 90vw; max-height: 90vh; border-radius: 6px; }
+
+        /* ── Responsive ── */
+        @media (max-width: 900px) {
+            .top {
+                display: block;
+                min-height: auto;
+            }
+            .sidebar {
+                position: static;
+                height: auto;
+                width: 100%;
+                min-width: 0;
+                border-right: none;
+                border-bottom: 1px solid var(--border);
+                padding: 2.5rem 2rem 2rem;
+            }
+            .main {
+                margin-left: 0;
+            }
+            .sidebar-footer { margin-top: 2rem; }
+            .main { padding: 2rem; }
+            .gallery { grid-template-columns: 1fr 1fr; }
+            .projects { grid-template-columns: 1fr; }
         }
 
-        /* Fade-in animation */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(8px);
-            animation: fadeUp 0.5s ease forwards;
-        }
-
-        @keyframes fadeUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
+        @media (max-width: 550px) {
+            html { font-size: 15px; }
+            .sidebar { padding: 1.5rem 2.5rem 1.5rem 1.5rem !important; }
+            .main { padding: 1.5rem; }
+            .gallery { grid-template-columns: 1fr; }
+            .sidebar .bio,
+            .sidebar .seeking,
+            .sidebar .citizenship {
+                word-wrap: break-word;
+                overflow-wrap: break-word;
             }
         }
-
-        .fade-in:nth-child(1) { animation-delay: 0s; }
-        .fade-in:nth-child(2) { animation-delay: 0.08s; }
-        .fade-in:nth-child(3) { animation-delay: 0.16s; }
-        .fade-in:nth-child(4) { animation-delay: 0.24s; }
-        .fade-in:nth-child(5) { animation-delay: 0.32s; }
-        .fade-in:nth-child(6) { animation-delay: 0.4s; }
     </style>
 </head>
 <body>
-    <div class="container">
+    <div class="top">
 
-        <header class="fade-in">
+        <aside class="sidebar">
             <h1>Alex Spigler</h1>
-            <span class="tagline">GWU '27</span>
-        </header>
+            <div class="school">GWU '27</div>
 
-        <div class="divider fade-in"></div>
+            <p class="bio">Statistics and computer science student at George Washington University, graduating May 2027. I focus on quantitative methods&thinsp;&mdash;&thinsp;regression, time series, Bayesian inference, and experimental design.</p>
 
-        <div class="intro fade-in">
-            <p>Statistics and computer science student at George Washington University, graduating May 2027. I focus on quantitative methods&thinsp;—&thinsp;regression, time series, Bayesian inference, and experimental design.</p>
-        </div>
+            <div class="detail-label">Degrees</div>
+            <p class="detail-value">BS Statistics<br>BA Computer Science<br>Mathematics Minor</p>
 
-        <section class="fade-in">
-            <h2>Projects</h2>
+            <div class="detail-label">GPA</div>
+            <p class="detail-value mono">Statistics: 3.90<br>Overall:&nbsp;&nbsp;&nbsp; 3.83</p>
 
-            <div class="project">
+            <div class="sidebar-footer">
+                <p class="seeking">Currently seeking Summer 2026 internships in quantitative research, analytics, or data science.</p>
+                <div class="sidebar-links">
+                    <a href="https://github.com/alexspigler">GitHub</a>
+                    <a href="https://linkedin.com/in/alexspigler">LinkedIn</a>
+                    <a href="mailto:alex.spigler@gmail.com">Email</a>
+                </div>
+                <p class="citizenship"><span class="cit-line">&ndash; US &amp; Italian citizen</span><br><span class="cit-line">&ndash; Authorized to work in US and EU without sponsorship</span></p>
+            </div>
+        </aside>
+
+        <main class="main">
+
+            <h2 class="label">Projects</h2>
+
+            <div class="project-card">
                 <h3>Chaotic Attractors</h3>
-                <span class="tech">Python · NumPy · SciPy · Matplotlib</span>
+                <span class="tech">Python &middot; NumPy &middot; SciPy &middot; Matplotlib</span>
+                <div class="gallery">
+                    <figure>
+                        <img src="images/Custom2.png" alt="Custom chaotic attractor with purple and blue swirls" onclick="openLightbox(this)">
+                        <figcaption>Custom2 attractor</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="images/Custom3.png" alt="Custom chaotic attractor with purple gradient" onclick="openLightbox(this)">
+                        <figcaption>Custom3 attractor</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="images/Tinkerbell.png" alt="Tinkerbell attractor" onclick="openLightbox(this)">
+                        <figcaption>Tinkerbell attractor</figcaption>
+                    </figure>
+                </div>
                 <p>A production-ready package for discovering chaotic attractors through stochastic parameter search. Implements 9 dynamical systems with multi-stage statistical filtering to identify chaotic behavior across parameter space, plus a publication-quality visualization system with custom colormaps and automated equation rendering. Built with 50+ unit tests and a CLI.</p>
                 <a href="https://github.com/alexspigler/chaotic-attractors">View on GitHub</a>
             </div>
 
-            <div class="project">
-                <h3>Structural Break &amp; Time Series Modeling</h3>
-                <span class="tech">R · R Markdown</span>
+            <h3 class="project-title" style="margin-top: 2.75rem;">Structural Break &amp; Time Series Modeling</h3>
+            <span class="project-tech">R &middot; R Markdown</span>
+
+            <div class="project-card">
                 <p>An intervention analysis quantifying the impact of competitor market entry on weekly cereal sales. Uses a regression model with ARIMA(1,0,1) errors to detect a structural break, with a full diagnostic testing suite covering autocorrelation, heteroscedasticity, normality, and stationarity. Includes 10-week forecasts with prediction intervals, documented in a reproducible R Markdown report.</p>
                 <a href="https://github.com/alexspigler/time-series-structural-break-analysis">View on GitHub</a>
             </div>
-        </section>
 
-        <div class="divider fade-in"></div>
+            <h2 class="label" style="margin-top: 3.4rem;">Coursework</h2>
 
-        <section class="fade-in">
-            <h2>Education</h2>
-            <p class="edu-main">BS Statistics &amp; BA Computer Science, Mathematics Minor</p>
-            <p class="edu-school">George Washington University, Class of 2027</p>
-            <p class="edu-gpa">Statistics GPA: 3.90 · Overall GPA: 3.83</p>
-            <p class="coursework">Coursework includes Bayesian Statistics, Time Series Analysis, Mathematical Statistics, Design of Experiments, Sampling, Data Structures and Algorithms, Linear Algebra, and Database Systems.</p>
-        </section>
-
-        <div class="divider"></div>
-
-        <footer>
-            <p class="seeking">Currently seeking Summer 2026 internships in quantitative research, analytics, or data science.</p>
-            <div class="links">
-                <a href="https://github.com/alexspigler">GitHub</a>
-                <a href="https://linkedin.com/in/alexspigler">LinkedIn</a>
-                <a href="mailto:alex.spigler@gmail.com">Email</a>
+            <div class="label-section">
+                <div class="course-list">
+                    <span>Bayesian Statistics</span>
+                    <span>Time Series Analysis</span>
+                    <span>Mathematical Statistics</span>
+                    <span>Design of Experiments</span>
+                    <span>Sampling</span>
+                    <span>Data Structures &amp; Algorithms</span>
+                    <span>Linear Algebra</span>
+                    <span>Database Systems</span>
+                </div>
             </div>
-            <p class="citizenship">US &amp; Italian citizen · Authorized to work in US and EU without sponsorship</p>
-        </footer>
+
+        </main>
 
     </div>
+
+    <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" alt="">
+    </div>
+
+    <script>
+        function openLightbox(img) {
+            document.getElementById('lightbox-img').src = img.src;
+            document.getElementById('lightbox-img').alt = img.alt;
+            document.getElementById('lightbox').classList.add('active');
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+        }
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeLightbox();
+        });
+    </script>
 </body>
 </html>
