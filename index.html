@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alex Spigler — Statistics & Computer Science</title>
+    <meta name="description" content="Alex Spigler is a statistics and computer science student at George Washington University focused on quantitative methods, time series, and Bayesian inference.">
+    <meta name="author" content="Alex Spigler">
+    <meta property="og:title" content="Alex Spigler — Statistics & Computer Science">
+    <meta property="og:description" content="Statistics and computer science student at George Washington University. Focused on regression, time series, Bayesian inference, and experimental design.">
+    <meta property="og:type" content="website">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --fg: #1a1a1a;
+            --fg-secondary: #4a4a4a;
+            --fg-muted: #7a7a7a;
+            --bg: #faf9f7;
+            --bg-card: #ffffff;
+            --accent: #2c4a2e;
+            --accent-light: #e8efe8;
+            --border: #e0ddd8;
+            --serif: 'Source Serif 4', Georgia, serif;
+            --mono: 'IBM Plex Mono', 'Courier New', monospace;
+        }
+
+        html {
+            font-size: 17px;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--serif);
+            color: var(--fg);
+            background: var(--bg);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .container {
+            max-width: 640px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* Header */
+        header {
+            padding: 5rem 0 3rem;
+        }
+
+        header h1 {
+            font-family: var(--mono);
+            font-size: 1.65rem;
+            font-weight: 500;
+            letter-spacing: -0.01em;
+            margin-bottom: 0.2rem;
+        }
+
+        header .tagline {
+            font-family: var(--mono);
+            font-size: 0.78rem;
+            color: var(--fg-muted);
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+
+        .divider {
+            width: 100%;
+            height: 1px;
+            background: var(--border);
+            margin: 0;
+        }
+
+        /* Intro */
+        .intro {
+            padding: 2.5rem 0 2rem;
+        }
+
+        .intro p {
+            font-size: 1.05rem;
+            color: var(--fg-secondary);
+            max-width: 580px;
+        }
+
+        /* Sections */
+        section {
+            padding: 2rem 0;
+        }
+
+        section h2 {
+            font-family: var(--mono);
+            font-size: 0.72rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--fg-muted);
+            margin-bottom: 1.5rem;
+        }
+
+        /* Project Cards */
+        .project {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            transition: border-color 0.2s ease;
+        }
+
+        .project:hover {
+            border-color: var(--accent);
+        }
+
+        .project h3 {
+            font-family: var(--serif);
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.15rem;
+        }
+
+        .project .tech {
+            font-family: var(--mono);
+            font-size: 0.72rem;
+            color: var(--accent);
+            letter-spacing: 0.03em;
+            margin-bottom: 0.75rem;
+            display: block;
+        }
+
+        .project p {
+            font-size: 0.92rem;
+            color: var(--fg-secondary);
+            line-height: 1.65;
+        }
+
+        .project a {
+            display: inline-block;
+            margin-top: 0.75rem;
+            font-family: var(--mono);
+            font-size: 0.75rem;
+            color: var(--accent);
+            text-decoration: none;
+            letter-spacing: 0.02em;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s ease;
+        }
+
+        .project a:hover {
+            border-bottom-color: var(--accent);
+        }
+
+        .project a::after {
+            content: ' →';
+        }
+
+        /* Education */
+        .edu-main {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.15rem;
+        }
+
+        .edu-school {
+            font-size: 0.95rem;
+            color: var(--fg-secondary);
+            margin-bottom: 0.1rem;
+        }
+
+        .edu-gpa {
+            font-family: var(--mono);
+            font-size: 0.78rem;
+            color: var(--fg-muted);
+            margin-bottom: 0.85rem;
+        }
+
+        .coursework {
+            font-size: 0.88rem;
+            color: var(--fg-secondary);
+            line-height: 1.6;
+        }
+
+        /* Links / Footer */
+        footer {
+            padding: 2.5rem 0 5rem;
+        }
+
+        .links {
+            display: flex;
+            gap: 1.75rem;
+            flex-wrap: wrap;
+        }
+
+        .links a {
+            font-family: var(--mono);
+            font-size: 0.82rem;
+            color: var(--fg);
+            text-decoration: none;
+            letter-spacing: 0.02em;
+            padding-bottom: 2px;
+            border-bottom: 1.5px solid var(--border);
+            transition: border-color 0.2s ease, color 0.2s ease;
+        }
+
+        .links a:hover {
+            color: var(--accent);
+            border-bottom-color: var(--accent);
+        }
+
+        .seeking {
+            font-size: 0.92rem;
+            color: var(--fg-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .citizenship {
+            margin-top: 1.5rem;
+            font-family: var(--mono);
+            font-size: 0.7rem;
+            color: var(--fg-muted);
+            letter-spacing: 0.03em;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            html { font-size: 16px; }
+            header { padding: 3.5rem 0 2rem; }
+            header h1 { font-size: 1.4rem; }
+            .project { padding: 1.25rem; }
+        }
+
+        /* Fade-in animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(8px);
+            animation: fadeUp 0.5s ease forwards;
+        }
+
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in:nth-child(1) { animation-delay: 0s; }
+        .fade-in:nth-child(2) { animation-delay: 0.08s; }
+        .fade-in:nth-child(3) { animation-delay: 0.16s; }
+        .fade-in:nth-child(4) { animation-delay: 0.24s; }
+        .fade-in:nth-child(5) { animation-delay: 0.32s; }
+        .fade-in:nth-child(6) { animation-delay: 0.4s; }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <header class="fade-in">
+            <h1>Alex Spigler</h1>
+            <span class="tagline">GWU '27</span>
+        </header>
+
+        <div class="divider fade-in"></div>
+
+        <div class="intro fade-in">
+            <p>Statistics and computer science student at George Washington University, graduating May 2027. I focus on quantitative methods&thinsp;—&thinsp;regression, time series, Bayesian inference, and experimental design.</p>
+        </div>
+
+        <section class="fade-in">
+            <h2>Projects</h2>
+
+            <div class="project">
+                <h3>Chaotic Attractors</h3>
+                <span class="tech">Python · NumPy · SciPy · Matplotlib</span>
+                <p>A production-ready package for discovering chaotic attractors through stochastic parameter search. Implements 9 dynamical systems with multi-stage statistical filtering to identify chaotic behavior across parameter space, plus a publication-quality visualization system with custom colormaps and automated equation rendering. Built with 50+ unit tests and a CLI.</p>
+                <a href="https://github.com/alexspigler/chaotic-attractors">View on GitHub</a>
+            </div>
+
+            <div class="project">
+                <h3>Structural Break &amp; Time Series Modeling</h3>
+                <span class="tech">R · R Markdown</span>
+                <p>An intervention analysis quantifying the impact of competitor market entry on weekly cereal sales. Uses a regression model with ARIMA(1,0,1) errors to detect a structural break, with a full diagnostic testing suite covering autocorrelation, heteroscedasticity, normality, and stationarity. Includes 10-week forecasts with prediction intervals, documented in a reproducible R Markdown report.</p>
+                <a href="https://github.com/alexspigler/time-series-structural-break-analysis">View on GitHub</a>
+            </div>
+        </section>
+
+        <div class="divider fade-in"></div>
+
+        <section class="fade-in">
+            <h2>Education</h2>
+            <p class="edu-main">BS Statistics &amp; BA Computer Science, Mathematics Minor</p>
+            <p class="edu-school">George Washington University, Class of 2027</p>
+            <p class="edu-gpa">Statistics GPA: 3.90 · Overall GPA: 3.83</p>
+            <p class="coursework">Coursework includes Bayesian Statistics, Time Series Analysis, Mathematical Statistics, Design of Experiments, Sampling, Data Structures and Algorithms, Linear Algebra, and Database Systems.</p>
+        </section>
+
+        <div class="divider"></div>
+
+        <footer>
+            <p class="seeking">Currently seeking Summer 2026 internships in quantitative research, analytics, or data science.</p>
+            <div class="links">
+                <a href="https://github.com/alexspigler">GitHub</a>
+                <a href="https://linkedin.com/in/alexspigler">LinkedIn</a>
+                <a href="mailto:alex.spigler@gmail.com">Email</a>
+            </div>
+            <p class="citizenship">US &amp; Italian citizen · Authorized to work in US and EU without sponsorship</p>
+        </footer>
+
+    </div>
+</body>
+</html>
