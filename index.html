@@ -66,6 +66,16 @@
             overflow-y: auto;
         }
 
+        .sidebar .headshot {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            object-position: center 15%;
+            margin-bottom: 1.25rem;
+            border: 2px solid var(--border);
+        }
+
         .sidebar h1 {
             font-family: var(--mono);
             font-size: 1.6rem;
@@ -385,6 +395,7 @@
     <div class="top">
 
         <aside class="sidebar">
+            <img class="headshot" src="images/headshot.jpeg" alt="Alex Spigler headshot">
             <h1>Alex Spigler</h1>
             <div class="school">GWU '27</div>
 
