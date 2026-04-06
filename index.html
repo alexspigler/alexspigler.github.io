@@ -90,7 +90,7 @@
             color: var(--fg-muted);
             letter-spacing: 0.04em;
             text-transform: uppercase;
-            margin-bottom: 2rem;
+            margin-bottom: 1.25rem;
         }
 
         .sidebar .bio {
@@ -125,8 +125,14 @@
             font-size: 0.78rem;
         }
 
+        .sidebar-middle {
+            margin-top: auto;
+            margin-bottom: auto;
+        }
+
         .sidebar-footer {
             margin-top: auto;
+            padding-top: 2rem;
         }
 
         .sidebar-links {
@@ -401,11 +407,13 @@
 
             <p class="bio">Statistics and computer science student at George Washington University, graduating May 2027. I focus on quantitative methods&thinsp;&mdash;&thinsp;regression, time series, Bayesian inference, and experimental design.</p>
 
-            <div class="detail-label">Degrees</div>
-            <p class="detail-value">BS Statistics<br>BA Computer Science<br>Mathematics Minor</p>
+            <div class="sidebar-middle">
+                <div class="detail-label">Degrees</div>
+                <p class="detail-value">BS Statistics<br>BA Computer Science<br>Mathematics Minor</p>
 
-            <div class="detail-label">GPA</div>
-            <p class="detail-value mono">Statistics: 3.90<br>Overall:&nbsp;&nbsp;&nbsp; 3.83</p>
+                <div class="detail-label">GPA</div>
+                <p class="detail-value mono">Statistics: 3.90<br>Overall:&nbsp;&nbsp;&nbsp; 3.83</p>
+            </div>
 
             <div class="sidebar-footer">
                 <p class="seeking">Currently seeking Summer 2026 internships in quantitative research, analytics, or data science.</p>
