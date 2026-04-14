@@ -330,6 +330,38 @@
             letter-spacing: 0.01em;
         }
 
+        /* ── Scroll hint (bottom of viewport when at top of page) ── */
+        .scroll-hint {
+            position: fixed;
+            bottom: 1.75rem;
+            left: calc(50vw + 185px);
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.35rem;
+            font-family: var(--mono);
+            font-size: 0.62rem;
+            letter-spacing: 0.12em;
+            color: var(--fg-muted);
+            opacity: 0.75;
+            transition: opacity 0.35s ease;
+            pointer-events: none;
+            z-index: 50;
+            animation: scroll-bounce 2s ease-in-out infinite;
+        }
+        .scroll-hint .scroll-arrow {
+            font-size: 0.95rem;
+            line-height: 1;
+        }
+        .scroll-hint.hidden {
+            opacity: 0;
+        }
+        @keyframes scroll-bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50%      { transform: translateX(-50%) translateY(5px); }
+        }
+
         /* ── Lightbox ── */
         .lightbox {
             display: none;
@@ -367,6 +399,10 @@
             .main { padding: 2rem; }
             .gallery { grid-template-columns: 1fr 1fr; }
             .projects { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 900px) {
+            .scroll-hint { left: 50%; }
         }
 
         @media (max-width: 550px) {
@@ -473,6 +509,11 @@
 
     </div>
 
+    <div class="scroll-hint" id="scrollHint">
+        <span class="scroll-text">MORE</span>
+        <span class="scroll-arrow">&darr;</span>
+    </div>
+
     <div class="lightbox" id="lightbox" onclick="closeLightbox()">
         <img id="lightbox-img" src="" alt="">
     </div>
@@ -489,6 +530,19 @@
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') closeLightbox();
         });
+
+        // Hide the scroll hint once the user scrolls, or if the page fits in viewport
+        const scrollHint = document.getElementById('scrollHint');
+        function updateScrollHint() {
+            if (!scrollHint) return;
+            const fits = document.body.scrollHeight <= window.innerHeight + 20;
+            const scrolled = window.scrollY > 50;
+            scrollHint.classList.toggle('hidden', fits || scrolled);
+        }
+        window.addEventListener('scroll', updateScrollHint);
+        window.addEventListener('resize', updateScrollHint);
+        window.addEventListener('load', updateScrollHint);
+        updateScrollHint();
     </script>
 </body>
 </html>
