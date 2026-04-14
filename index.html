@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alex Spigler — Statistics & Computer Science</title>
-    <meta name="description" content="Alex Spigler is a statistics and computer science student at George Washington University focused on quantitative methods, time series, and Bayesian inference.">
+    <meta name="description" content="Alex Spigler is a statistics and computer science student at George Washington University focused on regression, time series, Bayesian inference, experimental design, SQL, and relational database design.">
     <meta name="author" content="Alex Spigler">
     <meta property="og:title" content="Alex Spigler — Statistics & Computer Science">
-    <meta property="og:description" content="Statistics and computer science student at George Washington University. Focused on regression, time series, Bayesian inference, and experimental design.">
+    <meta property="og:description" content="Statistics and computer science student at George Washington University. Focused on regression, time series, Bayesian inference, experimental design, and SQL / relational database design.">
     <meta property="og:type" content="website">
     <link rel="canonical" href="https://alexspigler.dev/">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -205,38 +205,6 @@
             margin-bottom: 1.25rem;
         }
 
-        /* ── Project inline (chaotic attractors) ── */
-        .project-title {
-            font-family: var(--serif);
-            font-size: 1.15rem;
-            font-weight: 600;
-            margin-bottom: 0.15rem;
-        }
-        .project-tech {
-            font-family: var(--mono);
-            font-size: 0.72rem;
-            color: var(--accent);
-            letter-spacing: 0.03em;
-            display: block;
-            margin-bottom: 1.25rem;
-        }
-        .project-desc {
-            font-size: 0.9rem;
-            color: var(--fg-secondary);
-            line-height: 1.65;
-            margin-bottom: 0.25rem;
-        }
-        .project-gh {
-            display: inline-block;
-            margin-bottom: 0.5rem;
-            font-family: var(--mono);
-            font-size: 0.72rem;
-            color: var(--accent);
-            text-decoration: none;
-        }
-        .project-gh:hover { text-decoration: underline; }
-        .project-gh::after { content: ' \2192'; }
-
         /* ── Attractor gallery ── */
         .gallery {
             display: grid;
@@ -270,6 +238,20 @@
             text-align: center;
             margin-top: 0.5rem;
             letter-spacing: 0.02em;
+        }
+
+        /* ── Single hero image inside a project card ── */
+        .project-card .hero-image {
+            display: block;
+            width: 75%;
+            height: auto;
+            margin: 0 auto 1.25rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+        .project-card .hero-image:hover {
+            transform: scale(1.01);
         }
 
         /* ── Project cards ── */
@@ -311,6 +293,10 @@
             font-size: 0.85rem;
             color: var(--fg-secondary);
             line-height: 1.6;
+        }
+
+        .project-card + .project-card {
+            margin-top: 1.75rem;
         }
 
         .project-card a {
@@ -405,7 +391,7 @@
             <h1>Alex Spigler</h1>
             <div class="school">GWU '27</div>
 
-            <p class="bio">Statistics and computer science student at George Washington University, graduating May 2027. I focus on quantitative methods&thinsp;&mdash;&thinsp;regression, time series, Bayesian inference, and experimental design.</p>
+            <p class="bio">Statistics and computer science student at George Washington University, graduating May 2027. I focus on regression, time series, Bayesian inference, and experimental design, plus SQL and relational database design.</p>
 
             <div class="sidebar-middle">
                 <div class="detail-label">Degrees</div>
@@ -423,7 +409,7 @@
                     <a href="mailto:alex.spigler@gmail.com">Email</a>
                     <a href="/resume.pdf" target="_blank" download="Alex_Spigler_Resume.pdf">Resume</a>
                 </div>
-                <p class="citizenship"><span class="cit-line">&ndash; US &amp; Italian citizen</span><br><span class="cit-line">&ndash; Authorized to work in US and EU without sponsorship</span></p>
+                <p class="citizenship"><span class="cit-line">&ndash; US &amp; Italian citizen</span><br><span class="cit-line">&ndash; Authorized to work in US and EU</span></p>
             </div>
         </aside>
 
@@ -452,12 +438,20 @@
                 <a href="https://github.com/alexspigler/chaotic-attractors">View on GitHub</a>
             </div>
 
-            <h3 class="project-title" style="margin-top: 2.75rem;">Structural Break &amp; Time Series Modeling</h3>
-            <span class="project-tech">R &middot; R Markdown</span>
-
             <div class="project-card">
+                <h3>Structural Break &amp; Time Series Modeling</h3>
+                <span class="tech">R &middot; R Markdown</span>
+                <img class="hero-image" src="images/cereal-diagnostics.png" alt="Four-panel sarima diagnostic: standardized residuals, ACF, normal Q-Q plot, and Ljung-Box p-values confirming the ARIMA(1,0,1) model fits as white noise" onclick="openLightbox(this)">
                 <p>An intervention analysis quantifying the impact of competitor market entry on weekly cereal sales. Uses a regression model with ARIMA(1,0,1) errors to detect a structural break, with a full diagnostic testing suite covering autocorrelation, heteroscedasticity, normality, and stationarity. Includes 10-week forecasts with prediction intervals, documented in a reproducible R Markdown report.</p>
                 <a href="https://github.com/alexspigler/time-series-structural-break-analysis">View on GitHub</a>
+            </div>
+
+            <div class="project-card">
+                <h3>Restaurant Management Database System</h3>
+                <span class="tech">SQL &middot; PostgreSQL &middot; Java</span>
+                <img class="hero-image" src="images/restaurant-erd.png" alt="Entity-relationship diagram for the restaurant management database" onclick="openLightbox(this)">
+                <p>A normalized (BCNF) PostgreSQL database of 11 tables modeling a full-service restaurant &mdash; customers, orders, menu items, deliveries, and reservations &mdash; populated from the Maven Analytics Restaurant Orders dataset. Includes 10 SQL queries (multi-table joins, set operations, relational division), plus views and triggers enforcing business rules like auto-promoting customers to premium status. A Java + JDBC front-end provides keyword search and live aggregate dashboards over the order data.</p>
+                <a href="https://github.com/alexspigler/restaurant-management-system">View on GitHub</a>
             </div>
 
             <h2 class="label" style="margin-top: 3.4rem;">Coursework</h2>
