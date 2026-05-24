@@ -337,7 +337,8 @@
         /* ── Scroll hint (bottom of viewport when at top of page) ── */
         .scroll-hint {
             position: fixed;
-            bottom: 1.75rem;
+            bottom: 5vh;
+            bottom: 5dvh;
             left: calc(50vw + 185px);
             transform: translateX(-50%);
             display: flex;
@@ -390,8 +391,8 @@
             }
             .sidebar {
                 position: static;
-                min-height: 90vh;
-                min-height: 90dvh;
+                min-height: 80vh;
+                min-height: 80dvh;
                 width: 100%;
                 min-width: 0;
                 border-right: none;
@@ -407,7 +408,7 @@
         }
 
         @media (max-width: 900px) {
-            .scroll-hint { left: 50%; }
+            .scroll-hint { left: 50%; bottom: 17vh; bottom: 17dvh; }
         }
 
         @media (max-width: 550px) {
