@@ -182,7 +182,7 @@
 
         /* ── Right: main content ── */
         .main {
-            padding: 3.5rem 3rem;
+            padding: 1.75rem 3rem;
             margin-left: 370px;
             flex: 1;
         }
@@ -305,6 +305,18 @@
 
         /* ── Coursework pills ── */
         .label-section { margin-bottom: 2.5rem; }
+
+        .course-group { margin-bottom: 1.25rem; }
+        .course-group:last-child { margin-bottom: 0; }
+
+        .course-group-label {
+            font-family: var(--mono);
+            font-size: 0.6rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--fg-muted);
+            margin-bottom: 0.5rem;
+        }
 
         .course-list {
             display: flex;
@@ -484,15 +496,34 @@
             <h2 class="label" style="margin-top: 3.4rem;">Coursework</h2>
 
             <div class="label-section">
-                <div class="course-list">
-                    <span>Bayesian Statistics</span>
-                    <span>Time Series Analysis</span>
-                    <span>Mathematical Statistics</span>
-                    <span>Design of Experiments</span>
-                    <span>Sampling</span>
-                    <span>Data Structures &amp; Algorithms</span>
-                    <span>Linear Algebra</span>
-                    <span>Database Systems</span>
+                <div class="course-group">
+                    <div class="course-group-label">Statistics</div>
+                    <div class="course-list">
+                        <span>Time Series Analysis</span>
+                        <span>Regression Analysis</span>
+                        <span>Bayesian Statistics</span>
+                        <span>Mathematical Statistics</span>
+                        <span>Design of Experiments</span>
+                        <span>Sampling</span>
+                    </div>
+                </div>
+                <div class="course-group">
+                    <div class="course-group-label">Computer Science</div>
+                    <div class="course-list">
+                        <span>Data Structures &amp; Algorithms</span>
+                        <span>Database Systems</span>
+                        <span>Software Engineering</span>
+                        <span>Computer Systems</span>
+                        <span>Discrete Structures</span>
+                    </div>
+                </div>
+                <div class="course-group">
+                    <div class="course-group-label">Mathematics</div>
+                    <div class="course-list">
+                        <span>Linear Algebra</span>
+                        <span>Multivariable Calculus</span>
+                        <span>Ordinary Differential Equations</span>
+                    </div>
                 </div>
             </div>
 
