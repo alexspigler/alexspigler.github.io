@@ -169,13 +169,6 @@
             padding-right: 0.4rem;
         }
 
-        .sidebar .seeking {
-            font-size: 0.82rem;
-            color: var(--accent);
-            font-weight: 500;
-            margin-bottom: 0.75rem;
-        }
-
         .sidebar .citizenship {
             font-family: var(--mono);
             font-size: 0.65rem;
@@ -411,7 +404,6 @@
             .main { padding: 1.5rem; }
             .gallery { grid-template-columns: 1fr; }
             .sidebar .bio,
-            .sidebar .seeking,
             .sidebar .citizenship {
                 word-wrap: break-word;
                 overflow-wrap: break-word;
@@ -427,7 +419,7 @@
             <h1>Alex Spigler</h1>
             <div class="school">GWU '27</div>
 
-            <p class="bio">Statistics and computer science student at George Washington University, graduating May 2027. I focus on regression, time series, Bayesian inference, and experimental design, plus SQL and relational database design.</p>
+            <p class="bio">Statistics and Computer Science student at George Washington University (Class of '27), with a foundation in time series analysis, quantitative modeling, and Bayesian statistics. I work primarily in Python, R, and SQL.</p>
 
             <div class="sidebar-middle">
                 <div class="detail-label">Degrees</div>
@@ -438,7 +430,6 @@
             </div>
 
             <div class="sidebar-footer">
-                <p class="seeking">Currently seeking Summer 2026 internships in quantitative research, analytics, or data science.</p>
                 <div class="sidebar-links">
                     <a href="https://github.com/alexspigler">GitHub</a>
                     <a href="https://linkedin.com/in/alexspigler">LinkedIn</a>
@@ -452,6 +443,22 @@
         <main class="main">
 
             <h2 class="label">Projects</h2>
+
+            <div class="project-card">
+                <h3>Structural Break &amp; Time Series Modeling</h3>
+                <span class="tech">R &middot; R Markdown</span>
+                <img class="hero-image" src="images/cereal-diagnostics.png" alt="Four-panel sarima diagnostic: standardized residuals, ACF, normal Q-Q plot, and Ljung-Box p-values confirming the ARIMA(1,0,1) model fits as white noise" onclick="openLightbox(this)">
+                <p>An intervention analysis of weekly cereal sales around a competitor's market entry. Diagnostics flagged autocorrelated residuals in the baseline regression (the only violated assumption), motivating a model with ARIMA(1,0,1) errors that restored white-noise residuals (confirmed via Ljung-Box). The entry reversed the sales trend from +1,153 to -2,104 units/week, with no meaningful immediate jump in level. Includes 10-week forecasts with prediction intervals, documented in a reproducible R Markdown report.</p>
+                <a href="https://github.com/alexspigler/time-series-structural-break-analysis">View on GitHub</a>
+            </div>
+
+            <div class="project-card">
+                <h3>Restaurant Management Database System</h3>
+                <span class="tech">PostgreSQL &middot; Java</span>
+                <img class="hero-image" src="images/restaurant-erd.png" alt="Entity-relationship diagram for the restaurant management database" onclick="openLightbox(this)">
+                <p>A normalized (BCNF) PostgreSQL database of 11 tables modeling a full-service restaurant &mdash; customers, orders, menu items, deliveries, and reservations &mdash; with menu items drawn from the Maven Analytics Restaurant Orders dataset (other seed data synthetic). Includes 10 SQL queries (multi-table joins, set operations, relational division), plus views and triggers enforcing business rules like auto-promoting customers to premium status. A Java Swing GUI provides keyword search and live aggregate statistics (MAX/MIN/AVG) over orders and menu items via JDBC.</p>
+                <a href="https://github.com/alexspigler/restaurant-management-system">View on GitHub</a>
+            </div>
 
             <div class="project-card">
                 <h3>Chaotic Attractors</h3>
@@ -472,22 +479,6 @@
                 </div>
                 <p>A Python package that discovers chaotic attractors by stochastic search over a continuous 4-parameter space. A cheap low-iteration screen rejects most candidates; survivors are re-simulated in full and ranked by a custom quality score, then colored by point density via a subsampled Gaussian KDE. Implements 9 systems (5 classical, 4 custom), with vector/raster export, a CLI, and 50+ tests.</p>
                 <a href="https://github.com/alexspigler/chaotic-attractors">View on GitHub</a>
-            </div>
-
-            <div class="project-card">
-                <h3>Structural Break &amp; Time Series Modeling</h3>
-                <span class="tech">R &middot; R Markdown</span>
-                <img class="hero-image" src="images/cereal-diagnostics.png" alt="Four-panel sarima diagnostic: standardized residuals, ACF, normal Q-Q plot, and Ljung-Box p-values confirming the ARIMA(1,0,1) model fits as white noise" onclick="openLightbox(this)">
-                <p>An intervention analysis of weekly cereal sales around a competitor's market entry. Diagnostics flagged autocorrelated residuals in the baseline regression (the only violated assumption), motivating a model with ARIMA(1,0,1) errors that restored white-noise residuals (confirmed via Ljung-Box). The entry reversed the sales trend from +1,153 to -2,104 units/week, with negligible immediate change in level. Includes 10-week forecasts with prediction intervals, documented in a reproducible R Markdown report.</p>
-                <a href="https://github.com/alexspigler/time-series-structural-break-analysis">View on GitHub</a>
-            </div>
-
-            <div class="project-card">
-                <h3>Restaurant Management Database System</h3>
-                <span class="tech">PostgreSQL &middot; Java</span>
-                <img class="hero-image" src="images/restaurant-erd.png" alt="Entity-relationship diagram for the restaurant management database" onclick="openLightbox(this)">
-                <p>A normalized (BCNF) PostgreSQL database of 11 tables modeling a full-service restaurant &mdash; customers, orders, menu items, deliveries, and reservations &mdash; with menu items drawn from the Maven Analytics Restaurant Orders dataset (other seed data synthetic). Includes 10 SQL queries (multi-table joins, set operations, relational division), plus views and triggers enforcing business rules like auto-promoting customers to premium status. A Java + JDBC front-end provides keyword search and live aggregate statistics (MAX/MIN/AVG) over orders and menu items.</p>
-                <a href="https://github.com/alexspigler/restaurant-management-system">View on GitHub</a>
             </div>
 
             <h2 class="label" style="margin-top: 3.4rem;">Coursework</h2>
