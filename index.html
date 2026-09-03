@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alex Spigler — Statistics & Computer Science</title>
-    <meta name="description" content="Alex Spigler is a statistics and computer science student at George Washington University focused on regression, time series, Bayesian inference, experimental design, SQL, and relational database design.">
+    <title>Alex Spigler — Statistics &amp; Computer Science</title>
+    <meta name="description" content="Alex Spigler is a statistics and computer science student at George Washington University focused on experimental design, statistical inference, time-series forecasting, and reproducible analysis in Python, R, and SQL.">
     <meta name="author" content="Alex Spigler">
-    <meta property="og:title" content="Alex Spigler — Statistics & Computer Science">
-    <meta property="og:description" content="Statistics and computer science student at George Washington University. Focused on regression, time series, Bayesian inference, experimental design, and SQL / relational database design.">
+    <meta property="og:title" content="Alex Spigler — Statistics &amp; Computer Science">
+    <meta property="og:description" content="Statistics and computer science student at George Washington University focused on experimental design, statistical inference, time-series forecasting, and reproducible analysis.">
     <meta property="og:type" content="website">
     <link rel="canonical" href="https://alexspigler.dev/">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,400&amp;display=swap" rel="stylesheet">
     <style>
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -166,17 +166,6 @@
         }
         .gpa-table td:first-child {
             padding-right: 0.4rem;
-        }
-
-        .sidebar .citizenship {
-            font-family: var(--mono);
-            font-size: 0.65rem;
-            color: var(--fg-muted);
-        }
-        .sidebar .cit-line {
-            display: inline-block;
-            padding-left: 1em;
-            text-indent: -1em;
         }
 
         /* ── Right: main content ── */
@@ -454,9 +443,11 @@
             html { font-size: 15px; }
             .sidebar { padding: 1.5rem 2.5rem 1.5rem 1.5rem !important; }
             .main { padding: 1.5rem; }
-            .gallery { grid-template-columns: 1fr; }
-            .sidebar .bio,
-            .sidebar .citizenship {
+            .gallery {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 0.5rem;
+            }
+            .sidebar .bio {
                 word-wrap: break-word;
                 overflow-wrap: break-word;
             }
@@ -471,7 +462,7 @@
             <h1>Alex Spigler</h1>
             <div class="school">GWU '27</div>
 
-            <p class="bio">Statistics and Computer Science student at George Washington University (Class of '27), focused on time series analysis, regression modeling, and Bayesian statistics. I work primarily in Python, R, and SQL, and I love combining statistics with code.</p>
+            <p class="bio">Statistics and Computer Science student at George Washington University (Class of '27), focused on experimentation, statistical inference, and decision-oriented data analysis. I work primarily in Python, R, and SQL, combining careful measurement with reproducible code.</p>
 
             <div class="sidebar-middle">
                 <div class="detail-label">Degrees</div>
@@ -488,7 +479,6 @@
                     <a href="mailto:alex.spigler@gmail.com">Email</a>
                     <a href="/resume.pdf" target="_blank" download="Alex_Spigler_Resume.pdf">Resume</a>
                 </div>
-                <p class="citizenship"><span class="cit-line">&ndash; US &amp; Italian citizen</span><br><span class="cit-line">&ndash; Authorized to work in the US and EU</span></p>
             </div>
         </aside>
 
@@ -497,19 +487,11 @@
             <h2 class="label">Projects</h2>
 
             <div class="project-card">
-                <h3>Competitor Impact Analysis &amp; Time Series Modeling</h3>
+                <h3>U.S. Unemployment Rate Forecasting</h3>
                 <span class="tech">R &middot; R Markdown</span>
-                <img class="hero-image" src="images/cereal-diagnostics.webp" alt="Four-panel ARIMA(1,0,1) diagnostic: standardized residuals, ACF, normal Q-Q plot, and Ljung-Box p-values confirming the model's residuals are white noise" onclick="openLightbox(this)">
-                <p>An intervention analysis of weekly cereal sales around a competitor's market entry, built on synthetic data to demonstrate the full workflow. Diagnostics flagged autocorrelated residuals in the baseline regression (the only violated assumption), motivating a model with ARIMA(1,0,1) errors that restored white-noise residuals (confirmed via Ljung-Box). The entry reversed the sales trend from +1,153 to -2,104 units/week, with no meaningful immediate jump in level. Includes 10-week forecasts with prediction intervals, documented in a reproducible R Markdown report.</p>
-                <a href="https://github.com/alexspigler/time-series-structural-break-analysis" target="_blank" rel="noopener noreferrer">View on GitHub</a>
-            </div>
-
-            <div class="project-card">
-                <h3>Restaurant Management Database System</h3>
-                <span class="tech">PostgreSQL</span>
-                <img class="hero-image" src="images/restaurant-erd.svg" alt="Entity-relationship diagram for the restaurant management database" onclick="openLightbox(this)">
-                <p>A normalized (BCNF) PostgreSQL database of 11 tables modeling a full-service restaurant &mdash; customers, orders, menu items, deliveries, and reservations &mdash; with 32 menu items from the Maven Analytics Restaurant Orders dataset (beverages and other seed data synthetic). Includes 10 SQL queries (multi-table joins, set operations, relational division), plus views and triggers enforcing business rules like auto-promoting customers to premium status.</p>
-                <a href="https://github.com/alexspigler/restaurant-management-system" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+                <img class="hero-image" src="images/unemployment-holdout.webp" alt="ETS unemployment-rate forecasts and prediction intervals over the locked August 2024 through July 2026 holdout" onclick="openLightbox(this)">
+                <p>A reproducible forecasting study of 942 observed monthly BLS unemployment rates across 943 calendar months from 1948 through 2026. Five SARIMA specifications and ETS were compared across 10 rolling validation windows before scoring the selected model on a locked 24-month holdout. ETS reduced holdout RMSE by 31.4% versus naive and 43.2% versus seasonal-naive forecasts; the analysis preserves a source-documented missing month and reports forecast bias, interval coverage, and regime sensitivity.</p>
+                <a href="https://github.com/alexspigler/us-unemployment-forecasting" target="_blank" rel="noopener noreferrer">View on GitHub</a>
             </div>
 
             <div class="project-card">
@@ -529,8 +511,16 @@
                         <figcaption>Tinkerbell attractor</figcaption>
                     </figure>
                 </div>
-                <p>A Python package that discovers chaotic attractors by stochastic search over a discretized 4-parameter space. A cheap low-iteration screen rejects most candidates; survivors are re-simulated in full and ranked by a custom quality score, then colored by point density via a subsampled Gaussian KDE. Implements 9 systems (5 classical, 4 custom), with vector/raster export and a CLI.</p>
+                <p>A Python package for seeded stochastic search across discretized 4-parameter systems. Short trajectories discard burn-in and reject collapse or divergence; full survivors are checked for recurrence and positive finite-time largest Lyapunov estimates, ranked by geometry, and colored by point density through subsampled Gaussian KDE. Includes 9 systems (5 established forms, 4 custom variants), CLI and API entry points, and PNG/PDF/SVG export.</p>
                 <a href="https://github.com/alexspigler/chaotic-attractors" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+            </div>
+
+            <div class="project-card">
+                <h3>USB Watchdog: macOS Hardware-Tamper Monitor</h3>
+                <span class="tech">Python &middot; Bash &middot; C &middot; IOKit</span>
+                <img class="hero-image" src="images/usb-watchdog-menu.webp" alt="USB Watchdog menu showing dry-run mode and the recommended graceful-shutdown response" onclick="openLightbox(this)">
+                <p>A macOS menu-bar tamper alarm that records USB, Thunderbolt, SD-card, and external-display inventories, then initiates a selected shutdown response when a persistent change is observed. A native IOKit listener requests immediate USB checks while independent polling, bounded probe retries, and wake-time revalidation preserve coverage when event monitoring is unavailable. The Python GUI, Bash engine, and native C helper are regression-tested for event failover, probe failures, wake handling, and both shutdown policies; the system is a physical-change tripwire, not device authentication.</p>
+                <a href="https://github.com/alexspigler/usb-watchdog" target="_blank" rel="noopener noreferrer">View on GitHub</a>
             </div>
 
             <h2 class="label" style="margin-top: 3.4rem;">Coursework</h2>
