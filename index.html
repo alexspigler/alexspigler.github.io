@@ -291,6 +291,70 @@
         .project-card a:hover { text-decoration: underline; }
         .project-card a::after { content: ' \2192'; }
 
+        .card-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.35rem 1.25rem;
+            margin-top: 0.75rem;
+        }
+
+        .project-card .card-links a {
+            margin-top: 0;
+        }
+
+        /* ── Experience ── */
+        .experience-card {
+            padding: 1.5rem;
+            margin-bottom: 3.4rem;
+            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+        }
+
+        .experience-heading {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            gap: 1rem;
+            margin-bottom: 0.15rem;
+        }
+
+        .experience-heading h3 {
+            font-size: 1.05rem;
+            font-weight: 600;
+        }
+
+        .experience-date {
+            flex: none;
+            font-family: var(--mono);
+            font-size: 0.68rem;
+            color: var(--fg-muted);
+        }
+
+        .experience-company {
+            font-family: var(--mono);
+            font-size: 0.68rem;
+            color: var(--accent);
+            letter-spacing: 0.03em;
+            display: block;
+            margin-bottom: 0.75rem;
+        }
+
+        .experience-card ul {
+            margin-left: 1.1rem;
+        }
+
+        .experience-card li {
+            padding-left: 0.2rem;
+            font-size: 0.85rem;
+            color: var(--fg-secondary);
+            line-height: 1.6;
+        }
+
+        .experience-card li + li {
+            margin-top: 0.55rem;
+        }
+
         /* ── Coursework pills ── */
         .label-section { margin-bottom: 2.5rem; }
 
@@ -443,6 +507,13 @@
             html { font-size: 15px; }
             .sidebar { padding: 1.5rem 2.5rem 1.5rem 1.5rem !important; }
             .main { padding: 1.5rem; }
+            .experience-heading {
+                display: block;
+            }
+            .experience-date {
+                display: block;
+                margin-top: 0.2rem;
+            }
             .gallery {
                 grid-template-columns: repeat(3, 1fr);
                 gap: 0.5rem;
@@ -484,6 +555,21 @@
 
         <main class="main">
 
+            <h2 class="label">Experience</h2>
+
+            <section class="experience-card" aria-labelledby="answersnow-title">
+                <div class="experience-heading">
+                    <h3 id="answersnow-title">Data Analyst Intern</h3>
+                    <span class="experience-date">Jul. – Aug. 2026</span>
+                </div>
+                <span class="experience-company">AnswersNow · PostgreSQL · R · Mode Analytics</span>
+                <ul>
+                    <li>Defined approximately 25 client and utilization metrics at the warehouse-column and flag level, resolving a cross-team cancellation-rate discrepancy caused by tentative schedule records.</li>
+                    <li>Built a manager-approved competing-risks analysis of 2,121 clients using cause-specific Cox models. A 10-percentage-point higher Stage-1 attendance rate was associated with lower dropout hazard at day 90 (HR 0.840) and day 365 (HR 0.936), with time-varying and influence diagnostics.</li>
+                    <li>Analyzed 23,406 expected client-weeks across 1,232 clients in PostgreSQL, finding that the weekly share receiving therapy fell from 86–89% to 78–81% while monthly reach remained near 88%.</li>
+                </ul>
+            </section>
+
             <h2 class="label">Projects</h2>
 
             <div class="project-card">
@@ -491,7 +577,10 @@
                 <span class="tech">R &middot; R Markdown</span>
                 <img class="hero-image" src="images/unemployment-holdout.webp" alt="Selected SARIMA unemployment-rate forecasts and prediction intervals over the held-out August 2024 through July 2026 period" onclick="openLightbox(this)">
                 <p>A reproducible forecasting study of 942 observed monthly BLS unemployment rates across 943 calendar months from 1948 through 2026. Pre-validation seasonal-strength, KPSS, and ACF/PACF diagnostics define 24 SARIMA specifications, compared with ETS across 10 rolling 24-month windows before the selected model is scored on a held-out evaluation period. The selected SARIMA improves holdout MAE but not RMSE versus naive and drift benchmarks, showing how rankings change across loss functions and economic regimes; the analysis also preserves a source-documented missing month and reports interval and residual diagnostics.</p>
-                <a href="https://github.com/alexspigler/us-unemployment-forecasting" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+                <div class="card-links">
+                    <a href="https://github.com/alexspigler/us-unemployment-forecasting/blob/main/unemployment-forecasting.pdf" target="_blank" rel="noopener noreferrer">Read the report</a>
+                    <a href="https://github.com/alexspigler/us-unemployment-forecasting" target="_blank" rel="noopener noreferrer">View repository</a>
+                </div>
             </div>
 
             <div class="project-card">
@@ -512,7 +601,10 @@
                     </figure>
                 </div>
                 <p>A Python package for seeded stochastic search across discretized 4-parameter systems. Short trajectories discard burn-in and reject collapse or divergence; full survivors are checked for recurrence and positive finite-time largest Lyapunov estimates, ranked by geometry, and colored by point density through subsampled Gaussian KDE. Includes 9 systems (5 established forms, 4 custom variants), CLI and API entry points, and PNG/PDF/SVG export.</p>
-                <a href="https://github.com/alexspigler/chaotic-attractors" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+                <div class="card-links">
+                    <a href="https://github.com/alexspigler/chaotic-attractors#installation" target="_blank" rel="noopener noreferrer">Installation &amp; usage</a>
+                    <a href="https://github.com/alexspigler/chaotic-attractors" target="_blank" rel="noopener noreferrer">View repository</a>
+                </div>
             </div>
 
             <div class="project-card">
@@ -520,7 +612,10 @@
                 <span class="tech">Python &middot; Bash &middot; C &middot; IOKit</span>
                 <img class="hero-image" src="images/usb-watchdog-menu.webp" alt="USB Watchdog menu showing dry-run mode and the recommended graceful-shutdown response" onclick="openLightbox(this)">
                 <p>A macOS menu-bar tamper alarm that records USB, Thunderbolt, SD-card, and external-display inventories, then initiates a selected shutdown response when a persistent change is observed. A native IOKit listener requests immediate USB checks while independent polling, bounded probe retries, and wake-time revalidation preserve coverage when event monitoring is unavailable. The Python GUI, Bash engine, and native C helper are regression-tested for event failover, probe failures, wake handling, and both shutdown policies; the system is a physical-change tripwire, not device authentication.</p>
-                <a href="https://github.com/alexspigler/usb-watchdog" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+                <div class="card-links">
+                    <a href="https://github.com/alexspigler/usb-watchdog/blob/main/SECURITY.md" target="_blank" rel="noopener noreferrer">Read the security model</a>
+                    <a href="https://github.com/alexspigler/usb-watchdog" target="_blank" rel="noopener noreferrer">View repository</a>
+                </div>
             </div>
 
             <h2 class="label" style="margin-top: 3.4rem;">Coursework</h2>
