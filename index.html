@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alex Spigler — Statistics &amp; Computer Science</title>
-    <meta name="description" content="Alex Spigler is a statistics and computer science student at George Washington University focused on experimental design, statistical inference, time-series forecasting, and reproducible analysis in Python, R, and SQL.">
+    <meta name="description" content="Alex Spigler is a Statistics and Computer Science student at George Washington University (expected May 2027), interested in data-science roles centered on statistical modeling, experimentation, statistical inference, product decisions, and forecasting. Python, R, and SQL.">
     <meta name="author" content="Alex Spigler">
     <meta property="og:title" content="Alex Spigler — Statistics &amp; Computer Science">
-    <meta property="og:description" content="Statistics and computer science student at George Washington University focused on experimental design, statistical inference, time-series forecasting, and reproducible analysis.">
+    <meta property="og:description" content="Statistics and Computer Science student at George Washington University (expected May 2027), interested in data-science roles centered on statistical modeling, experimentation, statistical inference, product decisions, and forecasting.">
     <meta property="og:type" content="website">
     <link rel="canonical" href="https://alexspigler.dev/">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -533,7 +533,7 @@
             <h1>Alex Spigler</h1>
             <div class="school">GWU '27</div>
 
-            <p class="bio">Statistics and Computer Science student at George Washington University (Class of '27), focused on experimentation, statistical inference, and decision-oriented data analysis. I work primarily in Python, R, and SQL, and I enjoy combining statistics with code.</p>
+            <p class="bio">I'm pursuing a BS in Statistics and a BA in Computer Science, with a minor in Mathematics, at George Washington University (expected May 2027). I'm interested in data-science roles centered on statistical modeling, experimentation, statistical inference, product decisions, and forecasting. I work primarily in Python, R, and SQL.</p>
 
             <div class="sidebar-middle">
                 <div class="detail-label">Degrees</div>
@@ -576,7 +576,7 @@
                 <h3>U.S. Unemployment Rate Forecasting</h3>
                 <span class="tech">R &middot; R Markdown</span>
                 <img class="hero-image" src="images/unemployment-holdout.webp" alt="Selected SARIMA unemployment-rate forecasts and prediction intervals over the held-out August 2024 through July 2026 period" onclick="openLightbox(this)">
-                <p>A reproducible forecasting study of 942 observed monthly BLS unemployment rates across 943 calendar months from 1948 through 2026. Pre-validation seasonal-strength, KPSS, and ACF/PACF diagnostics define 24 SARIMA specifications, compared with ETS across 10 rolling 24-month windows before the selected model is scored on a held-out evaluation period. The selected SARIMA improves holdout MAE but not RMSE versus naive and drift benchmarks, showing how rankings change across loss functions and economic regimes; the analysis also preserves a source-documented missing month and reports interval and residual diagnostics.</p>
+                <p>Built a reproducible forecasting study on 942 observed monthly BLS unemployment rates (1948–2026), preserving a source-documented missing month and reserving the final 24 calendar months as holdout. Compared 24 diagnostically specified SARIMA models and ETS across 10 rolling windows; on a held-out 24-month period, the selected model beat naive and drift on MAE but not RMSE, exposing regime sensitivity. The analysis also reports interval and residual diagnostics.</p>
                 <div class="card-links">
                     <a href="https://github.com/alexspigler/us-unemployment-forecasting/blob/main/unemployment-forecasting.pdf" target="_blank" rel="noopener noreferrer">Read the report</a>
                     <a href="https://github.com/alexspigler/us-unemployment-forecasting" target="_blank" rel="noopener noreferrer">View repository</a>
@@ -600,7 +600,7 @@
                         <figcaption>Tinkerbell attractor</figcaption>
                     </figure>
                 </div>
-                <p>A Python package for seeded stochastic search across discretized 4-parameter systems. Short trajectories discard burn-in and reject collapse or divergence; full survivors are checked for recurrence and positive finite-time largest Lyapunov estimates, ranked by geometry, and colored by point density through subsampled Gaussian KDE. Includes 9 systems (5 established forms, 4 custom variants), CLI and API entry points, and PNG/PDF/SVG export.</p>
+                <p>Built a pip-installable Python library (CLI + API) for searching, validating, and visualizing 9 four-parameter 2D systems (5 established forms, 4 custom variants). Designed a seeded, staged search that removes burn-in and validates survivors with finite-time largest Lyapunov estimates; ranked outputs by geometry and rendered density with subsampled Gaussian KDE. Includes PNG/PDF/SVG export.</p>
                 <div class="card-links">
                     <a href="https://github.com/alexspigler/chaotic-attractors#installation" target="_blank" rel="noopener noreferrer">Installation &amp; usage</a>
                     <a href="https://github.com/alexspigler/chaotic-attractors" target="_blank" rel="noopener noreferrer">View repository</a>
@@ -611,7 +611,7 @@
                 <h3>USB Watchdog: macOS Hardware-Tamper Monitor</h3>
                 <span class="tech">Python &middot; Bash &middot; C &middot; IOKit</span>
                 <img class="hero-image" src="images/usb-watchdog-menu.webp" alt="USB Watchdog menu showing dry-run mode and the recommended graceful-shutdown response" onclick="openLightbox(this)">
-                <p>A macOS menu-bar tamper alarm that records USB, Thunderbolt, SD-card, and external-display inventories, then initiates a selected shutdown response when a change is observed. A native IOKit listener requests immediate USB checks while independent polling, bounded probe retries, and wake-time revalidation preserve coverage when event monitoring is unavailable. The Python GUI, Bash engine, and native C helper are regression-tested for event failover, probe failures, wake handling, and both shutdown policies; the system is a physical-change tripwire, not device authentication.</p>
+                <p>Built a macOS menu-bar tamper alarm with a Python GUI and Bash engine that monitors USB, Thunderbolt, SD-card, and external-display inventories and triggers either a normal shutdown with forced-halt fallback or an immediate forced halt upon an observed change. Implemented a native IOKit event listener with an independent polling fallback; regression-tested event failover, bounded probe failures, wake-time revalidation, process identity, and both shutdown policies, then packaged the system as a reproducible app bundle. The system is a physical-change tripwire, not device authentication.</p>
                 <div class="card-links">
                     <a href="https://github.com/alexspigler/usb-watchdog/blob/main/SECURITY.md" target="_blank" rel="noopener noreferrer">Read the security model</a>
                     <a href="https://github.com/alexspigler/usb-watchdog" target="_blank" rel="noopener noreferrer">View repository</a>
