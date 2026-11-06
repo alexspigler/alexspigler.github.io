@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /shared/
 
 Sitemap: https://alexspigler.dev/sitemap.xml
